@@ -1,0 +1,18 @@
+<%- include("partials/header") %>
+
+<div id="title">
+	<p>
+		Welcome to Railey's Chat Services!
+	</p>
+</div>
+<div id="formplacement">
+	<p>
+		What should you be identified as?
+	</p>
+	<form action="/addname" method="POST">
+		<input type="text" name="newname" placeholder="Input Name">
+		<button>Start</button>
+	</form>
+</div>
+
+<%- include("partials/footer") %>

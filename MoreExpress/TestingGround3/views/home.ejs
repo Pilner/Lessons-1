@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Chat Messages</title>
+		<link rel="stylesheet" href="/style.css">
+		<!-- <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script> -->
+	</head>
+	<body>
+		<div class="container">
+			
+			<p class="title">
+				Chat Messages
+			</p>
+			
+			
+			<% if (chatList.length < 1) { %>
+			
+			<div class="chatLists">
+				<p class="caution">
+					<strong>Caution:</strong> People on the Internet may not be who they say they are.
+				</p>
+				<p class="placeholdermessage">
+					<strong>There are no messages here....... Yet!</strong>
+				</p>
+			</div>
+
+			<% } else { %>
+				
+			<div class="chatLists">
+				<p class="caution">
+					<strong>Caution:</strong> People on the Internet may not be who they say they are.
+				</p>
+					<% chatList.forEach((chat) => { %>
+					<ul>
+						<li><strong><%= chat.name %></strong> - <%= chat.chat %></li>
+					</ul>
+					<% }) %>
+			</div>
+			
+			<% } %>
+			
+			
+			
+			<div class="formBox">
+				<form action="/createChat" method="POST">
+					<input type="text" name="name" placeholder="Username" required>
+					<br>
+					<input type="text" name="chat" placeholder="Message" required>
+					<button>Send</button>
+				</form>
+			</div>
+			
+		</div>
+		
+		
+		
+		
+		<script>
+			setInterval("myFunction()", 2000);
+				
+			function myFunction() {
+			  if (document.querySelectorAll("input")[0] === document.activeElement || document.querySelectorAll("input")[1] === document.activeElement) {
+				  
+			  } else {
+				window.location.reload(1);
+			  }
+			}
+			
+			
+		</script>
+	</body>
+</html>

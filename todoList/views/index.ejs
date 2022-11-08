@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" charset="utf-8"></script>
+    <style>
+    body {
+    	background: linear-gradient(to right, rgb(255, 144, 235), rgb(148, 255, 122));
+    	font-family: Roboto;
+    	font-weight: normal;
+    	-webkit-user-select: none;
+    	-khtml-user-select: none;
+    	-moz-user-select: none;
+    	-ms-user-select: none;
+    	-o-user-select: none;
+    	user-select: none;
+    }
+
+    .container {
+    	width: 360px;
+    	margin: 100px auto ;
+    	background-color: aliceblue;
+    	box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      background-color: #2980b9;
+      color: white;
+      margin: 0;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      font-size: 24px;
+      font-weight: normal;
+    }
+    ul {
+    	list-style-type: none;
+    	font-size: 17px;
+    	margin: 0;
+    	padding: 0;
+    	line-height: 40px;
+    }
+
+    li:hover span {
+    	transition: 0.2s linear;
+    	width: 40px;
+    	opacity: 100%;
+    }
+
+    li span {
+    	transition: 0.2s linear;
+    	/* padding: 10px 15px; */
+    	margin-right: 20px;
+    	width: 0;
+    	height: inherit;
+    	background-color: red;
+    	display: inline-block;
+    	text-align: center;
+    	opacity: 0;
+    	color: white;
+    }
+
+    input[type='text'] {
+    	width: inherit;
+    	box-sizing: border-box;
+    	line-height: 40px;
+    	padding-left: 10px;
+    	font-size: 20px;
+    	background-color: aliceblue;
+    	border: 3px solid rgba(0, 0, 0, 0);
+    }
+
+    input[type='text']:focus {
+    	background-color: white;
+    	border: 3px solid #2980b9;
+    	outline: none;
+    	transition: 120ms;}
+
+    input[type='text']::placeholder {
+    	font-size: 20px;
+    	line-height: 40px;
+    }
+
+
+
+    .completed {
+    	text-decoration: line-through;
+    	font-style: italic;
+    	color: rgb(170, 170, 170);
+    }
+    </style>
+  </head>
+  <body>
+
+    <div class="container">
+     <h1>TO-DO LIST</h1>
+      <input type="text" placeholder="Add New Todo">
+      <ul>
+        <li><span>X</span>Go To Potions Class</li>
+        <li><span>X</span>Buy New Robes</li>
+        <li><span>X</span>Visit Hagrid</li>
+      </ul>
+    </div>
+
+    <script type="text/javascript">
+    // This is in jQuery
+
+    $("ul").on("click", "li", function() {
+      $(this).toggleClass("completed");
+    })
+
+    $("ul").on("click", "span", function(event) {
+      $(this).parent().fadeOut("500ms", function() {
+        $(this).remove();
+      });
+
+      event.stopPropagation();
+    })
+
+    $("input[type='text']").keypress(function(event) {
+      if (event.which === 13) {
+        if ($(this).val() !== "") {
+          //grabbing new todo text from input
+          var todoText = $(this).val();
+          $(this).val("");
+          //create a new li and add to ul
+          $("ul").append("<li><span>X</span>" + todoText + "</li>")
+        }
+      }
+    })
+
+    </script>
+  </body>
+</html>

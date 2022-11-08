@@ -1,0 +1,38 @@
+<%- include("partials/header") %>
+
+<% if(friendslist.length < 1 || friendslist == undefined){ %>
+	<div id="main">
+		<p>
+			You don't have any friends!	
+		</p>
+	</div>
+<% } else { %>
+	<div>
+		<div id="main">
+			<p>
+				Here are your friends:
+			</p>
+		</div>
+
+		<div id="second">
+			<% friendslist.forEach(function(friend) { %>
+			<ul>	
+			<li><%= friend %></li>
+			</ul>
+			<% }) %>
+		</div>
+	</div>
+<% } %>
+
+
+
+<div id="formPlacement">
+	<form action="/addfriend" method="POST">
+		<input type="text" name="newfriend" placeholder="Name of Friend">
+		<div id="frndbtn">
+			<button>Add Friend</button>
+		</div>
+	</form>
+</div>
+
+<%- include("partials/footer") %>
